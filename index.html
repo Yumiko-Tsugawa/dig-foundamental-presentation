@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!-- <script type="text/javascript" src="draw.js"></script> -->
+</head>
+
+<body>
+  <div>
+    <p>参加人数<br>
+      <input type="number" name="number" size="5" min="3" max="20" id="numberOfLines" value="5">
+    </p>
+    <p>あたりの数<br>
+      <input type="number" name="number" size="3" min="1" max="20" id="numberOfWinners" value="1">
+    </p>
+    <input type="button" value="くじ作成" id="constitute" />
+    <!-- <input type="button" value="くじ作成" onclick="main();" /> -->
+    <p>ライン選択（左から何番目？）<br>
+      <input type="number" name="number" size="3" min="1" max="numberOfLines" id="selectIndex" value="1">
+    </p>
+
+  </div>
+  <div>
+    <input type="button" value="実行" onclick="drawPath(selectIndex.value);" />
+  </div>
+
+  <canvas id="SimpleCanvas" width="300" height="1000" style="background-color:#f9f7f8;"></canvas>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
+    </p>
+    <input type="button" value="くじ作成" onclick="main();" />
+  </div>
+  <div>
+    <input type="button" value="実行" onclick="drawPath();" />
+  </div>
+  <!-- <body onload="draw()"> -->
+  <!-- <h1>DIG プログラミング基礎へようこそ！</h1>
+  <h2>Mac をお使いの方は、 <font color="blue"> Cmd + Option + J</font><br>
+    Windows/Linux をお使いの方は、 <font color="blue"> Control+Shift+J</font> <br>
+    をクリックして、デベロッパーツールを開いてください。</h2>
+  <h2>下記にユニコーンの画像が表示されていれば成功です！</h2>
+  <img src="https://cdn.dribbble.com/users/1281272/screenshots/4515441/unicorn.gif">
+  <h3>30分悩んで進まなくなったら…helpチャンネルで質問してみましょう！</h3> -->
+  <canvas id="SimpleCanvas" width="300" height="1000" style="background-color:#f9f7f8;"></canvas>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
