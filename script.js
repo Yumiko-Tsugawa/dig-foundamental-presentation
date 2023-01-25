@@ -175,5 +175,5 @@ function drawText() {
     context.font = '48px serif';
     context.fillText("☕", boxWidth - 30, boxHeight + 50);
 
-    context.fillText("☕", -30, boxHeight + 50);
+//    context.fillText("☕", -30, boxHeight + 50);
 }
