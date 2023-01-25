@@ -1,26 +1,22 @@
 'use strict'
 // 1行目に記載している 'use strict' は削除しないでください
-
 //
 let btn1 = document.getElementById("constitute");
 btn1.addEventListener("click", main, false);
 let canvas = document.getElementById("SimpleCanvas");
 const context = canvas.getContext('2d');
-context.translate(10, 10)
+context.translate(50, 10)
 let selectIndex = document.getElementById("selectIndex");
-
-
+let cupPosition = [];
 const seedPoints = [];
 let xPosition = [];//縦線の座標
 let lineInfo = [];//各ライン上のポイントの[y座標,ペアのｘID,ペアのｙＩＤ ]
 let numberOfLines;
 const numberOfWinners = 1;
-const boxWidth = canvas.width - 20;
+const boxWidth = canvas.width - 100;
 const boxHeight = canvas.height - 70;
 
-console.log(xPosition);
-console.log(seedPoints)
-console.log(lineInfo)
+
 
 function main() {
     let input1 = document.getElementById("numberOfLines");
@@ -29,8 +25,13 @@ function main() {
     makePoints();
     lineInfo = JSON.parse(JSON.stringify(seedPoints));
     makeBridges();
+    placeCups();
     drawLots();
     drawText();
+    console.log(xPosition);
+    console.log(seedPoints);
+    console.log(lineInfo);
+    console.log(cupPosition);
 }
 
 function makeLines() {
@@ -58,9 +59,8 @@ function makePoints() {
 
 function makeBridges() {
     for (let i = 0; i < numberOfLines - 1; i++) {
+        let tempY = 0;
         for (let j = 0; j < lineInfo[i].length; j++) {
-            let tempY = 0;
-            //console.log(`i=${i}, j=${j}`);//*** */
             if (lineInfo[i][j].length === 1) {
                 let dy = (Math.random() * 0.2 - 0.1) * boxHeight;
                 let pairYCoordinate = lineInfo[i][j][0] + dy;
@@ -73,21 +73,21 @@ function makeBridges() {
                 if (pairYCoordinate < tempY) {
                     pairYCoordinate = tempY + 0.02 * boxHeight;
                 }
-
-
-
-                // if (j !== 0) {
-                //     if (pairYCoordinate < lineInfo[lineInfo[i][j - 1][1]][lineInfo[i][j - 1][2]][0]) {
-                //         pairYCoordinate = lineInfo[lineInfo[i][j - 1][1]][lineInfo[i][j - 1][2]][0] + 0.02 * boxHeight;
-                //     }
-                // }
                 let add = countUpperPoints(i + 1, pairYCoordinate);
                 lineInfo[i][j].push(i + 1, add);
                 lineInfo[i + 1].splice(add, 0, [pairYCoordinate, i, j]);
                 tempY = pairYCoordinate;
+                console.log(pairYCoordinate)
             }
         }
     }
+}
+
+
+function placeCups() {
+    let numberOfCups = document.getElementById("numberOfWinners").value;
+    [...cupPosition].map(i => i);
+
 }
 
 function countUpperPoints(i, Ycoordinate) {
@@ -173,6 +173,7 @@ function drawPath(selectedIndex) {
 
 function drawText() {
     context.font = '48px serif';
-    context.fillText("☕", boxWidth - 50, boxHeight + 50);
+    context.fillText("☕", boxWidth - 30, boxHeight + 50);
 
+    context.fillText("☕", -30, boxHeight + 50);
 }
